@@ -1,0 +1,267 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminLoginPage</title>
+    <link rel="shortcut icon" href="../Images/logo 1.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/AdminLoginPage.css">
+</head>
+    <style>
+        .que{
+            margin-bottom: 5px;
+        }
+        .allBtns{
+            margin-bottom: 25px;
+            border: none;
+            background-color: red;
+            color: white;
+            padding: 10px;
+        }
+        .op{
+            margin-left: 10%;
+        }
+        .img1{
+            width: 30%;
+        }
+    </style>
+<body>
+    <!-- <h1>WELCOME</h1> -->
+    <header>
+        <nav>
+            <img src="../Images/logo 1.png" alt="">
+            <a href="./Add Admin.html">
+                <p>Add Another Admin</p>
+            </a>
+            <button id="logout">Logout</button>
+        </nav>
+        
+    </header>
+            <div class="header2">
+                <h3>Welcome Back</h3>
+                <h4 id="userName"></h4>
+                <a href="./StudentScore.html"><p>Registered Student And Score.</p></a>
+                
+                    <!-- <div class="inner">
+                        
+                        
+                    </div> -->
+                    
+                </div>
+        <section>
+            <h1>SET QUESTIONS 👨‍🏫👨‍🏫👨‍🏫</h1>
+            <form name="Setquestion">
+                <div class="land">
+                    <label for="">Write Question Where:</label> <br>
+                    <input type="text" placeholder="Write Question Where:" name="Question">  <br>
+                    <label for="">If your Question is an Image Please Choose File. </label>
+                    <input type="file" name="file"> <br> <br>
+                </div>
+                
+                <div class="optionsland">
+                    <p>Options:</p> <br>
+                    <label for="">(A.)</label>
+                    <input type="text" name="A"> <br> <br>
+                    <label for="">(B.)</label>
+                    <input type="text" name="B"> <br> <br>
+                    <label for="">(C.)</label>
+                    <input type="text" name="C"> <br> <br>
+                    <label for="">(D.)</label>
+                    <input type="text" name="D"> <br> <br>
+                    <!-- <input type="text"> -->
+                    <p>Correct Answer:</p> <br>
+                    <input type="text" name="Answer"> <br>
+                    <!-- <button type="submit">Add Question</button> -->
+                    <button type="submit" style="position: relative;" id="btn2">
+                        <span>Add Question</span>
+                        <div id="spi2">
+                            <div class="loader"></div>
+                        </div>
+                    </button>
+                </div>
+                
+            </form>
+        </section>
+    <div class="showbelow">
+        <h1>Lists of Questions</h1>
+         <div class="showbelow2" >
+           <div id="showbelow2"></div>
+    </div>
+    <div id="spi">
+        <div class="loader"></div>
+    </div>
+   
+</body>
+    
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'
+    import { getFirestore, collection , getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'
+    import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js'
+   
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQMjs8TIrZwqucwYoXBIHzJTOJUoonJ-I",
+      authDomain: "standard-cbt-system.firebaseapp.com",
+      projectId: "standard-cbt-system",
+      storageBucket: "standard-cbt-system.appspot.com",
+      messagingSenderId: "606713891167",
+      appId: "1:606713891167:web:bbe15bf76dfe443b390eea"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+    const db = getFirestore(app)
+    const QuestionRef = collection(db, 'Questions')
+    const AdminRef = collection(db, 'Admin Details')
+    const storage = getStorage(app);
+        let array = []
+        let Questionbank =[]
+        let i = 0
+        let user = ''
+      async  function submitquestion(e) {
+            e.preventDefault();
+            console.log();
+            const Questions = Setquestion.Question.value
+            const one = Setquestion.A.value 
+            const two = Setquestion.B.value 
+            const three = Setquestion.C.value 
+            const four = Setquestion.D.value 
+            const Correct = Setquestion.Answer.value
+            const file = Setquestion.file.files[0]
+            const random = Math.floor(Math.random()* 99999)
+
+            array.push(
+                {Questions,Ans:[one,two,three,four],Correct}
+                )
+            console.log(array);
+            try {
+            spi2.style.display = 'block'
+        if(file){
+            const storageRef = ref(storage, 'Questionimg/' + (file + random))
+            const imgRes = await uploadBytes(storageRef, file)
+            const downloadURL = await getDownloadURL(storageRef)
+            const save = await addDoc(QuestionRef, {Questions,Option:[one,two,three,four],Correct,selectedAnswer:'', placeimg: downloadURL})
+            }else{
+            const save = await addDoc(QuestionRef, {Questions,Option:[one,two,three,four],Correct,selectedAnswer:''})
+            }
+            
+            
+            spi2.style.display = 'none'
+            alert('Added Succesfully ')
+            display()
+                
+            } catch (error) {
+                console.log(error);
+            }
+            finally{
+                spi2.style.display = 'none'
+            }
+        }
+
+        Setquestion.addEventListener('submit', submitquestion)
+       
+      async  function display() {
+            const res = await getDocs (QuestionRef)
+            console.log(res);
+            showbelow2.innerHTML = ''
+            
+            res.forEach((element, i)=> {
+                let actualData = element.data()
+                
+                showbelow2.innerHTML += `
+                
+                <div class="que" id="show1">
+                    <img src="${actualData.placeimg}" alt="Diagram" class="img1" >
+                </div> 
+                 <h2>${actualData.Questions}</h2>
+                `
+                show1.innerHTML = ''
+                if (actualData?.placeimg) {
+                    show1.innerHTML += `<img src="${actualData.placeimg}" alt="">`
+                }else if(!actualData?.placeimg){
+                    show1.innerHTML = ' '
+                }
+                actualData.Option.forEach(ele => {
+                    showbelow2.innerHTML += `
+                    <h3 class="op">${ele}</h3><br>
+                    `
+                    
+                });
+                
+                showbelow2.innerHTML += `
+                <h4>Correct Answer: ${actualData.Correct}</h4>
+                <button  id="${element.id}" class="allBtns">Delete</button>
+                `
+              
+            });
+           
+            getAllBtns()
+            
+        }
+       
+        display()
+
+    const deleteQuestion = async (id) => {
+      const docRef = doc(db, "Questions", id)
+      await deleteDoc(docRef)
+     
+      alert('Document Deleted Successfully')
+        display()
+    }
+
+    const getAllBtns = () => {
+      const btns = document.querySelectorAll(".allBtns");
+      btns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          deleteQuestion(e.target.id)
+          display()
+          submitquestion()
+        })
+      })
+    }
+    async function handlelogout() {
+        try {
+            await signOut(auth)
+            alert("user logged out")
+            window.location.href = '../Landing.html'
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    logout.addEventListener('click', handlelogout)
+    async function checkAuthstatus() {
+        spi.style.display = 'block'
+        await onAuthStateChanged(auth, (currentUser)=>{
+            
+            if (currentUser) {
+                // console.log("user is",currentUser);
+                user = {...currentUser}
+                handlecheckuser()
+                
+            } else{
+                // console.log(userEmail);
+                userEmail.textContent = "";
+                console.log('wrong');
+            }
+        })
+    }
+    window.addEventListener('load', checkAuthstatus)
+   async function handlecheckuser() {
+        const res = await getDocs(AdminRef)
+        res.forEach((el,i)=>{
+            console.log(el.data());
+            let dataa = el.data()
+            console.log(dataa.Email);
+            if (dataa.Email == user.email) {
+                userName.innerHTML = dataa.LastName + ' ' + dataa.OthersName
+            }
+            
+            
+        })
+            console.log(res);
+            spi.style.display = 'none'
+    }
+    </script>
+</html>

@@ -1,0 +1,135 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/Register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    
+    <section>
+        <h1>Registration Page</h1>
+        <div class="box">
+            <form name="register">
+         <label for="a">Others Name:</label>
+         <input type="text" placeholder="Oluwapelumi Elisha" name="other" id="a" required> <br>
+         <label for="b">Last Name:</label>
+         <input type="text" placeholder="Oguntunde" name="Last" id="b" required>
+         <label for="c">Gender:</label>
+         <select name="gender" id="c">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+         </select>
+         <label for="d">Date of Birth:</label>
+         <input type="date" name="date" id="d" required>
+         <label for="">Profile Picture:</label>
+         <input type="file" name="file" >
+         <label for="e">Phone Number:</label>
+         <input type="number" placeholder="07044708007" id="e" name="phone" required>
+         <label for="f">Email:</label>
+         <input type="email" placeholder="Oluwapelumielisha38@gmail.com" id="f" name="email" required>
+         <label for="g">Password:</label> 
+         <div class="input">
+            <input type="password" name="password" id="show" required>
+            <i class="fa-solid fa-eye" onclick="eye()" id="eye"></i>
+         </div>
+         
+         <label for="">Exam Number:</label>
+         <input type="text"  name="examnum" required id="exam" disabled>
+         <div class="generatebox" onclick="generating()" id="gen">
+             <p>Generate Exam Number</p>
+         </div> <br> <br>
+        <div class="btn">
+            <button type="submit" style="position: relative;">
+                Signup
+               
+            </button> <br> <br>
+            <span style=" color: red; font-size: 18px;" id="err"></span>
+        </div>
+         <hr>
+         <p class="p">Already Have An Account? &nbsp;<span><a href="../Landing.html">Login</a></span></p>
+        </form>
+        
+        </div><br> <br> <br>
+    </section> 
+     <div id="spi">
+                    <div class="loader"></div>
+                </div>
+</body>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'
+    import { getFirestore, collection , getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'
+    import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js'
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQMjs8TIrZwqucwYoXBIHzJTOJUoonJ-I",
+      authDomain: "standard-cbt-system.firebaseapp.com",
+      projectId: "standard-cbt-system",
+      storageBucket: "standard-cbt-system.appspot.com",
+      messagingSenderId: "606713891167",
+      appId: "1:606713891167:web:bbe15bf76dfe443b390eea"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+    const db = getFirestore(app)
+    const colRef = collection(db, 'User Details')
+    const storage = getStorage(app);
+        async function registration(e) {
+            e.preventDefault();
+            const OthersName = register.other.value
+            const LastName = register.Last.value
+            const Gender = register.gender.value 
+            const BirthDate = register.date.value
+            const Phone = register.phone.value
+            const Email = register.email.value
+            const Password = register.password.value
+            const ExaminationNumber = register.examnum.value
+            const file = register.file.files[0]
+            const random = Math.floor(Math.random()* 99999)
+
+        try {
+            spi.style.display = 'block'
+            const storageRef = ref(storage, 'Folders/' + (file + random))
+            const imgRes = await uploadBytes(storageRef, file)
+            const downloadURL = await getDownloadURL(storageRef)
+            const saveBlogs = await addDoc(colRef, {OthersName, LastName, Gender, BirthDate, Phone, Email,ExaminationNumber, image:downloadURL})
+            const userCredentials = await createUserWithEmailAndPassword(auth, Email, Password)
+            console.log(userCredentials);
+            alert('YOU HAVE REGISTER SUCCESSFUL')
+            window.location.href = '../Landing.html'
+            spi.style.display = 'none'
+        } catch (error) {
+            console.log(error.message);
+            err.innerHTML = error.message.slice(9,100)
+        }
+        finally{
+            spi.style.display = 'none'
+        }
+        
+        }
+        register.addEventListener('submit', registration)
+    </script>
+    <script>
+        
+        function generating() {
+             const others = register.other.value
+            const last = register.Last.value
+            // last.
+            if (others != '' || last != '') {
+            const randomnum = Math.floor(Math.random()* 9999)
+            exam.value = `
+            ${others.toUpperCase().slice(0,4)}/${last.toUpperCase().slice(0,2)}/${randomnum}
+            `
+            gen.style.display = 'none'
+            }
+           
+        }
+        function eye() {
+            show.type == 'password'? show.type = 'text': show.type = 'password'
+        }
+    </script>
+</html>

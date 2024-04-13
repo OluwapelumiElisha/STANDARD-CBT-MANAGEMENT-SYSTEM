@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+section img {
+  width: 100%;
+  height: 20vh;
+  z-index: 1;
+}
+section .second {
+  border: thin solid black;
+  width: 100%;
+  background-color: rgb(204, 204, 204);
+  height: 90vh;
+  position: relative;
+}
+section .second .box {
+  width: 70%;
+  background-color: white;
+  margin: auto;
+  border-radius: 5px;
+  position: absolute;
+  top: -40px;
+  left: 14.5%;
+  box-shadow: 0px 5px 27px 10px rgba(0, 0, 0, 0.63);
+}
+section .second .box .circle {
+  border: thick solid black;
+  width: 13%;
+  height: 20vh;
+  margin: auto;
+  margin-top: -50px;
+  border-radius: 100px;
+}
+section .second .box h3 {
+  text-align: center;
+}
+section .second .box h4 {
+  font-weight: 600;
+  text-align: center;
+}
+section .second .box h2 {
+  text-align: center;
+  color: #F26666;
+  margin-bottom: 9px;
+}
+section .second .box hr {
+  width: 50%;
+  margin: auto;
+}
+section .second .box p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  margin-bottom: 5px;
+}
+section .second .box .btn {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+section .second .box .btn button {
+  padding: 10px;
+  color: white;
+  background-color: #E13838;
+  border: none;
+}

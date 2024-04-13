@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD ADMIN</title>
+    <link rel="stylesheet" href="../Style/Add Admin.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <section>
+        <h1>Admin Page</h1>
+        <div class="box">
+            <form name="Adminregister">
+         <label for="a">Others Name:</label>
+         <input type="text" placeholder="Oluwapelumi Elisha" name="other" id="a" required> <br>
+         <label for="b">Last Name:</label>
+         <input type="text" placeholder="Oguntunde" name="Last" id="b" required>
+         <label for="c">Gender:</label>
+         <select name="gender" id="c">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+         </select>
+         <label for="">Profile Picture:</label>
+         <input type="file" name="file">
+         <label for="e">Phone Number:</label>
+         <input type="number" placeholder="07044708007" id="e" name="phone" required>
+         <label for="f">Email:</label>
+         <input type="email" placeholder="Oluwapelumielisha38@gmail.com" id="f" name="email" required>
+         <label for="g">Password:</label> 
+         <div class="input">
+            <input type="password" name="password" id="passwordview" required>
+            <i class="fa-solid fa-eye" id="eye" onclick="view()"></i>
+         </div>
+         <label for="">Admin:</label>
+         <select name="check" id="">
+            <option value="True">True</option>
+         </select>
+          <br> <br> 
+          
+        <div class="btn">
+            <button type="submit">Signup</button> <br> <br>
+        </div>
+        <span style=" color: red; font-size: 18px;" id="err" ></span>
+         <hr>
+         <p class="p">Already Have An Admin Account? &nbsp;<span><a href="../index.html">Login</a></span></p>
+        </form>
+        <!-- <span style=" color: red; font-size: 18px;" id="err"></span> -->
+        </div><br> <br> <br>
+    </section> 
+    <div id="spi">
+        <div class="loader"></div>
+    </div>
+</body>
+<script type="module" src="../Javascript/Add Admin.js"></script>
+    <script>
+        function view() {
+            passwordview.type == 'password' ? passwordview.type = 'text' : passwordview.type = 'password'
+        }
+    </script>
+</html>

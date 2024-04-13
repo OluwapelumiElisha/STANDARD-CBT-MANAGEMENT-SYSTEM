@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Back</title>
+    <!-- <script defer src="../index.js"></script> -->
+    <link rel="shortcut icon" href="../Images/logo 1.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/Examination.css">
+</head>
+<body>
+    <h1 id="demo"></h1>
+   
+    <section>
+        <img src="../Images/BG HEADER.png" alt="">
+        <div class="second">
+            
+            <div class="box">
+                <div class="circle" >
+                    <div id="CandiImg"></div>
+                </div>
+                <h3>NAME: <span id="Name"></span></h3>
+                <h4>EXAM NO: <span id="ExamNo"></span></h4> <br> 
+                <div id="instruction">
+                <h2>READ THESE INSTRUCTIONS CAREFEULLY !!!</h2> <hr>
+                <p>1. &nbsp;  Do not try to logout until you finish your examination.</p> <hr>
+                <p>2. &nbsp;  You can ONLY click on FINISH BUTTON if you have finish.</p> <hr>
+                <p>3. &nbsp;  You will be automatically logged out when your time elapsed.</p> <hr>
+                <p>4. &nbsp;  You are to attempt all questions and each carries one mark.</p> <hr>
+                
+                <p>6. &nbsp;  Do not try to logout until you finish your examination.</p> <hr>
+                <p>5. &nbsp;  Do not waste your time as time is againt you... Best of luck!!</p> <hr> <br> <br>
+                <div class="btn">
+                    <button id="UserLogout">LOGOUT</button>
+                    <button style="background-color: #3AB027;" id="start">START</button>
+                </div>
+            </div>
+                <div id="ExamArea">
+                    <div class="Timetext">
+                        <div class="Time" >
+                            <h1 id="Time"></h1>
+                        </div>
+                        <div class="text">
+                            <h4>FINISH</h4>
+                        </div>
+                    </div>
+                    <p>(You have answered <span id="numbe"></span> of <span id="arraylength"></span> )</p>
+                    <div class="general">
+                        <p>Course/Subject: General Question</p>
+                    </div>
+                    <div class="QuestionAnswer">
+                        <div class="round"></div>
+                        <div class="num">
+                            <h5 id="number"></h3>
+                        </div>
+                        <div id="questionbox">
+                            
+                        </div>  <div id="holdimg"></div><br> <br>
+                        <div id="answerbox"></div>
+                        <div class="PN">
+                        <h6 style="margin-top: 20px;" id="Pre"><&nbsp; Previous</p>
+                        <h6 style="text-align: end; margin-top: -28px;" id="Next">Next &nbsp; ></p>
+                            
+                        </div> 
+                    </div>
+                    <button id="check">Submit</button> 
+                </div>
+                <div id="confirmsubmit">
+                    <div class="PreSubmit" id="PreSubmit">
+                        <h5>There ia an Unanswer Question Left</h5>
+                        <h4>Are sure You Want To Submit?</h4> <br>
+                        <button id="No">❌</button> &nbsp; &nbsp; &nbsp; 
+                        <button id="Yes">✔</button> <br> <br>
+                    </div>
+                </div>
+                <div id="none">
+                    <div  id="submitPage">
+                        <div class="griditem" >SUBJECT</div>
+                        <div class="griditem1">NO OF QUESTIONS</div>
+                        <div class="griditem2" >ATTEMPTED</div>
+                        <div class="griditem3">SCORED</div>
+                        <div class="griditem4">GENERAL Questions</div>
+                        <div class="griditem5" id="questionslength"></div>
+                        <div class="griditem6" id="ATTEMPT"></div>
+                        <div class="griditem7" id="SCORED"></div>
+                        
+                    </div>
+                    <div class="logoutuser">
+                        <button id="UserLogout2">LOGOUT</button>
+                    </div><br> <br>
+                     
+                </div>
+
+            <br> 
+            </div> 
+        </div> <br> <br>
+    </section> 
+    <div id="spi">
+        <div class="loader"></div>
+    </div>
+</body>
+    <script type="module" src="../Javascript/Examination.js"></script>
+
+</html>

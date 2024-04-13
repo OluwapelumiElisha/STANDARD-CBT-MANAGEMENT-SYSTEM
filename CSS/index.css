@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  background-image: url(../Images/BG.png);
+  width: 100%;
+  border: thin solid rgba(128, 128, 128, 0.322);
+}
+section img {
+  margin-left: 37.5%;
+  width: 25%;
+}
+section p {
+  margin-left: 45%;
+  margin-top: -5.9%;
+  color: white;
+  font-size: 20px;
+}
+section .box {
+  border: thin solid white;
+  width: 25%;
+  margin: auto;
+  background-color: white;
+  margin-top: -15px;
+}
+section .box img {
+  margin: auto;
+  margin-top: 40px;
+  margin-left: 30%;
+  width: 40%;
+}
+section .box h5 {
+  text-align: center;
+  font-size: 18px;
+  font-family: cursive;
+}
+section .two {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  gap: 15%;
+}
+section .two .first {
+  width: 35%;
+  background-color: white;
+}
+section .two .first .word {
+  margin-top: 50px;
+}
+section .two .first .word h4 {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+section .two .first .input {
+  margin: auto;
+  width: 70%;
+  margin-top: 40px;
+}
+section .two .first .input input {
+  width: 90%;
+  padding: 9px;
+  border: thin solid gray;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+section .two .first .input #eye {
+  width: 2%;
+  cursor: pointer;
+}
+section .two .first .input input:focus {
+  outline: none;
+}
+section .two .first .input .p {
+  color: blue;
+  margin-left: 15%;
+  margin-top: 3px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 18px;
+}
+section .two .first .input span {
+  text-align: center;
+}
+section .two .first .input .View {
+  border: none;
+  padding: 3px;
+}
+section .two .first .input button {
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #3AB027;
+  border: none;
+  margin-left: 5%;
+}
+section .two .second {
+  width: 35%;
+  background-color: white;
+}
+section .two .second .word {
+  margin-top: 100px;
+}
+section .two .second .word h4 {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+section .two .second .input {
+  margin: auto;
+  width: 70%;
+  margin-top: 40px;
+}
+section .two .second .input input {
+  width: 90%;
+  padding: 9px;
+  border: thin solid gray;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+}
+section .two .second .input #eye {
+  width: 2%;
+  cursor: pointer;
+}
+section .two .second .input input:focus {
+  outline: none;
+}
+section .two .second .input input:hover {
+  box-shadow: 5px 3px 10px 1px #a0a0a0;
+}
+section .two .second .input .p {
+  color: blue;
+  margin-left: 15%;
+  margin-top: 3px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 18px;
+}
+section .two .second .input h5 {
+  margin-left: 8%;
+  color: red;
+  font-size: 18px;
+}
+section .two .second .input .View {
+  border: none;
+  padding: 3px;
+}
+section .two .second .input button {
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #3AB027;
+  border: none;
+  margin-left: 5%;
+}
+
+#spi {
+  top: 7px;
+  left: 43%;
+  position: absolute;
+  display: none;
+}
+#spi .loader {
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #3AB027;
+  width: 30px;
+  height: 30px; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+#spi2 {
+  top: 7px;
+  left: 43%;
+  position: absolute;
+  display: none;
+}
+#spi2 .loader {
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #3AB027;
+  width: 30px;
+  height: 30px; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 1279px) {
+  section .two {
+    gap: 5%;
+  }
+  section .two .first {
+    width: 80%;
+  }
+  section .two .second {
+    width: 80%;
+  }
+}
+@media (max-width: 971px) {
+  section p {
+    margin-left: 44.5%;
+    margin-top: -5.5%;
+    font-size: 15px;
+  }
+}
+@media (max-width: 900px) {
+  section .two {
+    flex-wrap: wrap;
+  }
+  section .two .first {
+    width: 95%;
+  }
+  section .two .second {
+    width: 95%;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 831px) {
+  section p {
+    margin-left: 44%;
+    margin-top: -6.5%;
+  }
+  section .box {
+    margin-top: -30px;
+    width: 35%;
+  }
+}
+@media (max-width: 619px) {
+  section p {
+    margin-left: 42%;
+  }
+}
+@media (max-width: 529px) {
+  section p {
+    margin-left: 41.5%;
+    font-size: 12px;
+  }
+  section img {
+    width: 30%;
+    margin-left: 35%;
+  }
+  section .box {
+    width: 45%;
+  }
+}
+@media (max-width: 455px) {
+  section p {
+    margin-top: -8%;
+  }
+  section .two .first .input .p {
+    margin-left: 15%;
+    font-size: 15px;
+  }
+  section .two .second .input .p {
+    margin-left: 15%;
+    font-size: 15px;
+  }
+  section .two .second .input h5 {
+    font-size: 12px;
+    margin-left: 12%;
+  }
+}
+@media (max-width: 359px) {
+  section p {
+    margin-left: 40%;
+    font-size: 10px;
+  }
+}
+@media (max-width: 305px) {
+  section img {
+    width: 50%;
+    margin-left: 25%;
+  }
+  section .box {
+    width: 60%;
+  }
+  section p {
+    margin-top: -12%;
+    margin-left: 35%;
+    font-size: 12px;
+  }
+}
+@media (max-width: 299px) {
+  section .two .first .input .p {
+    margin-left: 10%;
+    font-size: 12px;
+  }
+  section .two .second .input .p {
+    margin-left: 10%;
+    font-size: 12px;
+  }
+  section .two .second .input h5 {
+    font-size: 10px;
+    margin-left: 7%;
+  }
+}
+@media (max-width: 239px) {
+  section .two .first .input .p {
+    margin-left: 5%;
+    font-size: 12px;
+  }
+  section .two .second .input .p {
+    margin-left: 5%;
+    font-size: 12px;
+  }
+  section .two .second .input h5 {
+    font-size: 8px;
+    margin-left: 1%;
+  }
+}

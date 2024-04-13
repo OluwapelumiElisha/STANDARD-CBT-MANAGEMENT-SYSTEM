@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="test">
+        <label for="">Email:</label> <br>
+        <input type="email" placeholder="email" name="email" id="email1"> <br>
+        <label for="">Password:</label> <br>
+        <input type="password" placeholder="password" name="password" id="password1"> <br>
+        <!-- <select name="adm" id="">
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select> <br> <br> -->
+        <button type="submit">
+            <span>Add</span>
+        </button>
+
+    </form>
+    <!-- <button>Add</button> -->
+    <div id="show"></div>
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'
+    import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'
+    // import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js'
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAQMjs8TIrZwqucwYoXBIHzJTOJUoonJ-I",
+        authDomain: "standard-cbt-system.firebaseapp.com",
+        projectId: "standard-cbt-system",
+        storageBucket: "standard-cbt-system.appspot.com",
+        messagingSenderId: "606713891167",
+        appId: "1:606713891167:web:bbe15bf76dfe443b390eea"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+    const db = getFirestore(app)
+    const colRef = collection(db, 'testing')
+    let array = []
+    // const storage = getStorage(app);
+
+    async function testup(e) {
+        e.preventDefault();
+        const email = test.email.value
+        const password = test.password.value
+        // const Admin = test.adm.value
+
+        console.log('hjkj');
+
+        try {
+            // const saveBlogs = await addDoc(colRef, {email})
+            // console.log(saveBlogs);
+            const getter = await getDocs(colRef)
+            getter.forEach(ele => {
+                array.push({ ...ele.data(), id: ele.id })
+            });
+            display()
+
+
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+    test.addEventListener('submit', testup)
+    async function display() {
+        array.forEach((el) => {
+            show.innerHTML += `
+            <p>${el.Admin}</p>
+            `
+            if (el.Admin == true) {
+                logAmin()
+            }
+            else {
+                alert('No')
+            }
+        })
+
+
+    }
+
+    async function logAmin() {
+        const email = email1.value
+        const password = password1.value
+        const userCredentials = await signInWithEmailAndPassword(auth, email, password)
+        console.log(userCredentials);
+        window.location.href = '../index.html'
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

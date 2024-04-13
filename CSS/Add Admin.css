@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+section {
+  background-color: rgb(38, 40, 41);
+  width: 100%;
+}
+section h1 {
+  color: white;
+  font-size: 60px;
+  text-align: center;
+}
+section .box {
+  border: thin solid rgb(126, 125, 128);
+  width: 40%;
+  margin: auto;
+  margin-top: 10px;
+  background-color: rgb(97, 97, 100);
+  border-radius: 10px;
+  padding: 2%;
+}
+section .box label {
+  color: white;
+  font-size: 19px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+section .box input {
+  padding: 9px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: transparent;
+  border: thin solid gray;
+  color: black;
+}
+section .box input:focus {
+  outline: thin solid gray;
+}
+section .box .input {
+  border: thin solid gray;
+  border-radius: 8px;
+}
+section .box .input input {
+  width: 90%;
+  border: none;
+}
+section .box .input input:focus {
+  outline: none;
+}
+section .box .input #eye {
+  width: 2%;
+}
+section .box select {
+  padding: 9px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: transparent;
+  border: thin solid gray;
+}
+section .box .generatebox {
+  width: 40%;
+  padding: 5px;
+  margin: auto;
+  background-color: #3AB027;
+  border-radius: 5px;
+  cursor: pointer;
+}
+section .box .generatebox p {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+}
+section .box .btn {
+  width: 50%;
+  margin: auto;
+}
+section .box .btn button {
+  padding: 9px;
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #3AB027;
+  color: white;
+  font-size: 15px;
+  border: none;
+}
+section .box .p {
+  margin-top: 20px;
+  text-align: center;
+}
+section .box .p span a {
+  color: white;
+}
+
+#spi {
+  top: 65px;
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.659);
+  width: 100%;
+  height: 140vh;
+}
+#spi .loader {
+  margin-left: 47%;
+  margin-top: 25%;
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #3AB027;
+  width: 30px;
+  height: 30px; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+/* Safari */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 1093px) {
+  section h1 {
+    font-size: 50px;
+  }
+  section .box {
+    width: 60%;
+  }
+}
+@media (max-width: 600px) {
+  section h1 {
+    font-size: 30px;
+  }
+  section .box {
+    width: 80%;
+  }
+  section .box .generatebox {
+    width: 60%;
+  }
+}
+@media (max-width: 430px) {
+  section h1 {
+    font-size: 30px;
+  }
+  section .box {
+    width: 95%;
+  }
+  section .box .generatebox {
+    width: 75%;
+  }
+}

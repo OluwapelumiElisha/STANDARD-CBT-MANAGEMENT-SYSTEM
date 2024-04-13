@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CBT</title>
+    <link rel="shortcut icon" href="./Images/logo 1.png" type="image/x-icon">
+    <link rel="stylesheet" href="./CSS/LandingPage.css">
+</head>
+<body>
+    
+    <section >
+        <header>
+            <nav>
+                <div class="first">
+                   <h1> KNOWLEDGE</h1>
+                </div>
+                <div class="second">
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li><a href="./Landing.html"><button>GET STARTED</button></li></a>
+                        <img src="./Images/menu_2976215.png" alt="" onclick="drop()">
+                    </ul>
+                    
+                </div>
+            </nav>
+        </header>
+        <div class="word">
+            <div>
+                <p id="p"></p> <br/>
+            <h1 style=" color: white;" id="demo"></h1><br>
+            <a href="./Landing.html"><button style="cursor: pointer;">✍️✍️  Start Test Now!</button></a>
+            </div>
+
+        </div> 
+
+
+        <div class="intro">
+            <h1>STANDARD CBT MANAGEMENT SYSTEM</h1> <br> <br>
+            <p>In the realm of education and professional certification, Cognitive Behavioral Therapy (CBT) has emerged as a foundational approach for assessing and enhancing learning outcomes. A Standard CBT Management System designed for examination administration serves as a robust framework for educators and administrators to streamline the process of creating and delivering assessments.</p>
+
+        </div> 
+        <div id="menu">
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li style="margin-left: 15px;"><a href="./Landing.html"><button>GET STARTED</button></a></li>
+            </ul>
+        </div>
+    </section>
+    <script>
+        let i = 0;
+        console.log(typeof NaN === 'number');
+
+        let arr = [
+            {
+                p: 'You only have to know one thing',
+                word: 'STANDARD CBT MANAGEMENT SYSTEM.'
+            },
+            {
+                p: 'You only have to know one thing',
+                word: 'ONLINE CBT CENTER.'
+            },
+            {
+                p: 'You only have to know one thing',
+                word: 'EDUCATION IS A KEY TO SUCCESS.'
+            },
+            {
+                p: 'You only have to know one thing',
+                word: 'STANDARD CBT MANAGEMENT SYSTEM.'
+            },
+            {
+                p: 'You only have to know one thing',
+                word: 'YOU HAVE ALOT TO LEARN.'
+            }
+        ]
+        
+        function display() {
+        p.innerHTML = arr[i].p
+        demo.innerHTML = arr[i].word
+    }
+    display()
+   
+    function dis() {
+        const Me = setInterval(() => {
+            if (i < arr.length - 1) {
+                i++
+                console.log(i);
+                display()
+
+            } else if (i == 4) {
+                i = 1
+                i--
+                console.log(i);
+                display()
+            }
+
+        }, 4000);
+    }
+    dis()
+    function drop() {
+        if (menu.style.display == 'block') {
+            menu.style.display = 'none'
+        }else{
+            menu.style.display = 'block'
+        }
+    }
+    </script>
+</body>
+</html>

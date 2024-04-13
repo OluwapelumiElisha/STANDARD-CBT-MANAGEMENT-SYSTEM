@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 9vh;
+  background-color: white;
+}
+header nav {
+  width: 90%;
+  height: 9vh;
+  background-color: black;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+header nav a {
+  text-decoration: none;
+}
+header nav a p {
+  margin-top: 20px;
+  color: white;
+  margin-right: 10px;
+  font-size: 20px;
+}
+header nav button {
+  padding: 9px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  background-color: #3AB027;
+  cursor: pointer;
+}
+
+.header2 {
+  width: 100%;
+  height: 10vh;
+  background-color: palevioletred;
+  border: thin solid palevioletred;
+  display: flex;
+  justify-content: space-between;
+}
+.header2 h3 {
+  margin-top: 18px;
+}
+.header2 h4 {
+  margin-top: 18px;
+  font-size: 20px;
+}
+.header2 a {
+  text-decoration: none;
+}
+.header2 a p {
+  margin-top: 18px;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+section {
+  background-image: url(../Images/BG.png);
+  width: 100%;
+  min-height: 110vh;
+  border: thin solid rgba(128, 128, 128, 0.322);
+}
+section h1 {
+  color: white;
+  text-align: center;
+}
+section .land {
+  width: 90%;
+  margin: auto;
+}
+section .land label {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+section .land input {
+  margin: auto;
+  width: 90%;
+  border-radius: 5px;
+  padding: 25px;
+  border: none;
+}
+section .optionsland {
+  width: 60%;
+  margin: auto;
+}
+section .optionsland p {
+  color: white;
+  font-size: 20px;
+  text-align: start;
+}
+section .optionsland label {
+  font-size: 18px;
+  font-weight: 800;
+}
+section .optionsland input {
+  margin: auto;
+  width: 70%;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+}
+section button {
+  margin: auto;
+  background-color: #3AB027;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.showbelow {
+  width: 100%;
+  min-height: 100vh;
+  border: thin solid white;
+}
+.showbelow #showbelow2 {
+  border: thin solid black;
+  margin-left: 3%;
+}
+.showbelow h1 {
+  text-align: center;
+}
+
+#spi2 {
+  top: 7px;
+  left: 35%;
+  position: absolute;
+  display: none;
+}
+#spi2 .loader {
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #3AB027;
+  width: 30px;
+  height: 30px; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+
+#spi {
+  top: 0px;
+  position: absolute;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.659);
+  width: 100%;
+  height: 120vh;
+  left: 0px;
+}
+#spi .loader {
+  margin-left: 47%;
+  margin-top: 25%;
+  border: 4px solid white;
+  border-radius: 50%;
+  border-top: 4px solid #3AB027;
+  width: 30px;
+  height: 30px; /* Safari */
+  animation: spin 0.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (max-width: 720px) {
+  .header2 h3 {
+    font-size: 15px;
+  }
+  .header2 h4 {
+    font-size: 15px;
+  }
+  .header2 p {
+    font-size: 15px;
+  }
+  .header2 a p {
+    font-size: 15px;
+  }
+}
+@media (max-width: 500px) {
+  header nav a p {
+    font-size: 15px;
+  }
+  header nav button {
+    font-size: 10px;
+  }
+  .header2 h3 {
+    font-size: 10px;
+  }
+  .header2 h4 {
+    font-size: 10px;
+  }
+  .header2 p {
+    font-size: 10px;
+  }
+  .header2 a p {
+    font-size: 10px;
+  }
+  section h1 {
+    font-size: 15px;
+  }
+  section .land {
+    width: 95%;
+  }
+  section .land label {
+    font-size: 15px;
+  }
+  section .land input {
+    width: 100%;
+  }
+  section .optionsland {
+    width: 90%;
+  }
+  section .optionsland p {
+    font-size: 15px;
+  }
+  section .optionsland label {
+    font-size: 15px;
+    font-weight: 800;
+  }
+  section .optionsland input {
+    width: 90%;
+    padding: 10px;
+  }
+}
+@media (max-width: 376px) {
+  .header2 h3 {
+    font-size: 9px;
+  }
+  .header2 h4 {
+    font-size: 9px;
+  }
+  .header2 p {
+    font-size: 8px;
+  }
+}
+@media (max-width: 320px) {
+  header nav a p {
+    font-size: 10px;
+  }
+  header nav button {
+    font-size: 8px;
+  }
+  .header2 .inner {
+    width: 70%;
+  }
+  .header2 .inner p {
+    font-size: 10px;
+  }
+  .header2 .inner .image {
+    width: 20%;
+  }
+  section h1 {
+    font-size: 10px;
+  }
+  section .land {
+    width: 95%;
+  }
+  section .land label {
+    font-size: 10px;
+  }
+  section .land input {
+    width: 100%;
+  }
+  section .optionsland {
+    width: 90%;
+  }
+  section .optionsland p {
+    font-size: 15px;
+  }
+  section .optionsland label {
+    font-size: 15px;
+    font-weight: 800;
+  }
+  section .optionsland input {
+    width: 90%;
+    padding: 10px;
+  }
+}

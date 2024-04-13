@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Score</title>
+    <link rel="shortcut icon" href="../Images/credit-score-financial-banking-economy-concept.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/StudentScore.css">
+</head>
+    <style>
+        #show{
+            width: 40%;
+            margin-left: 2%;
+        }
+        #Show{
+            width: 95%;
+        }
+    </style>
+    <h1 id="demo"></h1>
+<div id="Show">
+        
+    </div>
+    <div id="spi">
+        
+        <div class="loader"></div>
+    </div>
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'
+    import { getFirestore, collection , getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'
+    // import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js'
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAQMjs8TIrZwqucwYoXBIHzJTOJUoonJ-I",
+      authDomain: "standard-cbt-system.firebaseapp.com",
+      projectId: "standard-cbt-system",
+      storageBucket: "standard-cbt-system.appspot.com",
+      messagingSenderId: "606713891167",
+      appId: "1:606713891167:web:bbe15bf76dfe443b390eea"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app)
+    const colRef = collection(db, 'User Details')
+    const ResultRef = collection(db, 'Results')
+    let StudentResult = []
+    async function getresult() {
+        try {
+            spi.style.display = 'block'
+        const res = await getDocs(ResultRef)
+        console.log(res);
+        res.forEach((el)=>{
+            StudentResult.push({...el.data(), id:el.id})
+        })
+        display()
+        spi.style.display = 'none'
+        } catch (error) {
+            console.log(error);
+        }
+        finally{
+            spi.style.display = 'none'
+        }
+       
+    }
+    getresult() 
+    function display() {
+        Show.innerHTML = ' '
+        StudentResult.forEach((el,i)=>{
+            Show.innerHTML += `
+            <div>
+                <img src="${el.image}" alt="" class="image">
+                <h1>Full-Name: ${el.LastName} ${el.OthersName}</h1>
+                <h1>Score: ${el.Score}</h1>
+                <h1>Attempt: ${el.ATTEMPTED}</h1>
+                <h1>Question: ${el.QuestionNumber}</h1>
+                <h2>Examination Number: ${el.ExaminationNumber}</h2>
+                <h3>Gender: ${el.Gender}</h3>
+                <h3>Phone Number: ${el.Phone}</h3>
+                <h3>Email: ${el.Email}</h3>
+                <button id="${el.id}" class="allBtns">Delete</button>
+                </div>
+            `
+        })
+        getAllBtns()
+    }
+
+    const deleteResult = async (id) => {
+      const docRef = doc(db, "Results", id)
+      await deleteDoc(docRef)
+      alert('Document Deleted Successfully')
+    }
+
+    const getAllBtns = () => {
+      const btns = document.querySelectorAll(".allBtns");
+      btns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          deleteResult(e.target.id)
+          getresult()
+        })
+      })
+    }
+    </script>
+</html>

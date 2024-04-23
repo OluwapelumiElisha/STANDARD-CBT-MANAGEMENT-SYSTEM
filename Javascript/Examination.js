@@ -194,7 +194,7 @@ function handleCount() {
             clearInterval(stop)
             handleSubmit()
         }
-    }, 6000);
+    }, 3000);
 }
 
 check.addEventListener('click', PRESUBMIT)
